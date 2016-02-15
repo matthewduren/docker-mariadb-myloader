@@ -54,5 +54,18 @@ RUN userdel -r www-data \
 
 RUN mkdir -p /tmp/mysql && chown mysql:mysql /tmp/mysql
 
+RUN apt-get remove -y git \
+                      python-setuptools \
+                      cmake \
+                      libglib2.0-dev \
+                      zlib1g-dev \
+                      libpcre3-dev \
+                      libmysqlclient18 \
+                      build-essential \
+                      libmariadbclient-dev \
+                      libssl-dev
+
+RUN apt-get autoremove -y
+
 EXPOSE 3306
 
